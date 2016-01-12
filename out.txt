@@ -1,0 +1,32 @@
+No.  Lab.                Instruction Operator.
+0    Fibonacci:          ALC         4         
+1                        STO         ret_addr  
+2                        STO         n         
+3                        LDA         (a)       
+4                        LOD         n         
+5                        LOD         1         
+6                        SUB                   
+7                        JSR         Fibonacci 
+8    ret_addr:           STN                   
+9                        LDA         (b)       
+10                       LOD         n         
+11                       LOD         2         
+12                       SUB                   
+13                       JSR         Fibonacci 
+14   ret_addr:           STN                   
+15                       LOD         a         
+16                       LOD         b         
+17                       ADD                   
+18                       LOD         ret_addr  
+19                       BR          ret_addr  
+20   main:               ALC         4         
+21                       STO         ret_addr  
+22                       STO         argv      
+23                       STO         args      
+24                       LDA         (n)       
+25                       JSR         SCANF     
+26   ret_addr:           LOD         n         
+27                       JSR         Fibonacci 
+28   ret_addr:           JSR         PRINTF    
+29   ret_addr:           LOD         ret_addr  
+30                       BR          ret_addr  
